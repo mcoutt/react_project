@@ -42,16 +42,17 @@ export default class PersonDetails extends Component {
             return <Spinner/>
         }
 
-        // if (!this.state.person) {
-        //     return <span>Select a person a list</span>
-        // }
+        if (!this.state.person) {
+            return <span>Select a person a list</span>
+        }
 
         const { id, name, gender, birthYear, eyeColor } = this.state.person;
 
         return (
             <div className="person-details card">
                 <img className="person-image"
-                     src={`https://starwars-visualguide.com/assets/img/characters/${id}.jpg`} />
+                     src={`https://starwars-visualguide.com/assets/img/characters/${id}.jpg`}
+                alt="person-details"/>
                 <div className="card-body">
                     <h4>{name} {this.props.personId} </h4>
                     <ul className="list-group list-group-flush">
