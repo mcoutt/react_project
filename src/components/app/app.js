@@ -8,9 +8,12 @@ import ErrorIndicator from "../error-indicator";
 import PeoplePage from "../people-page";
 import ItemList from "../item-list";
 import PersonDetails from "../person-details";
+import PlanetDetails from "../planet-details"
 
 import './app.css';
 import SwapiService from "../../services/swapi-service";
+import PlanetPage from "../planet-page";
+import StarshipPage from "../starship-page";
 
 export default class App extends Component {
 
@@ -62,25 +65,32 @@ export default class App extends Component {
                 <div className="row mb2">
                     <div className="col-md-6">
                         <ItemList
-                            onItemSelected={this.onPersonSelected}
-                            getData={this.swapiService.getAllPlanets}/>
+                          onItemSelected={this.onPersonSelected}
+                          getData={this.swapiService.getAllPlanets}
+                          renderItem={(item) => (<span>{item.name} <button>!</button></span>)}>
+                        </ItemList>
                     </div>
                     <div className="col-md-6">
                         <PersonDetails personId={this.state.selectedPerson}/>
                     </div>
-                </div>
 
-                <div className="row mb2">
                     <div className="col-md-6">
                         <ItemList
-                            onItemSelected={this.onPersonSelected}
-                            getData={this.swapiService.getAllStarships}/>
+                          onItemSelected={this.onPersonSelected}
+                          getData={this.swapiService.getAllStarships}
+                          renderItem={(item) => item.name} />
+
                     </div>
                     <div className="col-md-6">
                         <PersonDetails personId={this.state.selectedPerson}/>
                     </div>
+
                 </div>
 
+
+                {/*<PlanetPage/>*/}
+                {/**/}
+                {/*<StarshipPage />*/}
             </div>
         );
     }

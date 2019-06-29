@@ -46,7 +46,7 @@ export default class PersonDetails extends Component {
             return <span>Select a person a list</span>
         }
 
-        const { id, name, gender, birthYear, eyeColor } = this.state.person;
+        const { id, name, gender, birthYear, eyeColor, skinColor, mass, height, hairColor } = this.state.person;
 
         return (
             <div className="person-details card">
@@ -67,6 +67,22 @@ export default class PersonDetails extends Component {
                         <li className="list-group-item">
                             <span className="term">Eye color</span>
                             <span>{eyeColor}</span>
+                        </li>
+                        <li className="list-group-item">
+                            <span className="term">Hair color</span>
+                            <span>{hairColor}</span>
+                        </li>
+                        <li className="list-group-item">
+                            <span className="term">Skin color</span>
+                            <span>{skinColor}</span>
+                        </li>
+                        <li className="list-group-item">
+                            <span className="term">Mass</span>
+                            <span>{mass}</span>
+                        </li>
+                        <li className="list-group-item">
+                            <span className="term">Height</span>
+                            <span>{height}</span>
                         </li>
                     </ul>
                 </div>
