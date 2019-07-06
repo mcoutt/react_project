@@ -18,7 +18,7 @@ export default class SwapiService {
         const res = await fetch(request);
 
         if (!res.ok) {
-            throw new Error(`Could not fetch ${url}` +
+            throw new Error(`Could not fetch ${this._apiBase + url}` +
             `, received ${res.status}`);
         }
         return await res.json();
@@ -64,7 +64,7 @@ export default class SwapiService {
         return  `${this._imageBase}/characters/${id}.jpg`
     };
 
-    getStarShipImage = ({id}) => {
+    getStarshipImage = ({id}) => {
         return `${this._imageBase}/starships/${id}.jpg`
     };
 
@@ -78,14 +78,13 @@ export default class SwapiService {
     };
 
     _transformPlanet = (planet) => {
-
         return {
             id: this._extractId(planet),
             name: planet.name,
             population: planet.population,
             rotationPeriod: planet.rotation_period,
             diameter: planet.diameter
-        }
+        };
     };
 
     _transformStarship = (starship) => {
@@ -94,29 +93,22 @@ export default class SwapiService {
             name: starship.name,
             model: starship.model,
             manufacturer: starship.manufacturer,
-            constInCredits: starship.constInCredits,
+            costInCredits: starship.cost_in_credits,
             length: starship.length,
             crew: starship.crew,
             passengers: starship.passengers,
-            cargoCapacity: starship.cargoCapacity
+            cargoCapacity: starship.cargo_capacity
         }
     };
-
     _transformPerson = (person) => {
         return {
             id: this._extractId(person),
             name: person.name,
             gender: person.gender,
             birthYear: person.birth_year,
-            eyeColor: person.eye_color,
-            skinColor: person.skin_color,
-            mass: person.mass,
-            height: person.height,
-            hairColor: person.hair_color
+            eyeColor: person.eye_color
         }
     }
-
-
 }
 
 // const swapi = new SwapiService();
